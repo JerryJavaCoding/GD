@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - gdufassistant@localhost" uuid="a69e4244-31b5-4076-8a4b-3d271f61c346">
+    <database-info product="MySQL" version="5.6.24-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="gdufassistant"/>
+    <table name="gd_admin" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="admin_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="admin_password" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="admin_rank" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="admin_validate" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="aAccount" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aAnswer" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aPassword" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aQuestion" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="aRank" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FKF8AFD2D8A1D91B8F" table="gd_club" schema="" catalog="gdufassistant" columns="admin_id"/>
+    </table>
+    <table name="gd_book" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="bookId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="author" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="borrowableCount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="dpt" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="href" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="number" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="press" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pressDate" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="bookId"/>
+    </table>
+    <table name="gd_circle" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="tid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="createTime" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="sender" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="tid"/>
+      <foreign-key name="FK8BDAEA72D9610B2B" columns="sender" ref-table="gd_user" ref-schema="" ref-catalog="gdufassistant" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="FK1879C7F19BABE3CA" table="gd_circleimg" schema="" catalog="gdufassistant" columns="tid"/>
+      <exported-key name="FK187A40119BABE3CA" table="gd_circleimg" schema="" catalog="gdufassistant" columns="tid"/>
+      <exported-key name="gd_circlemes_ibfk_1" table="gd_circlemes" schema="" catalog="gdufassistant" columns="tid"/>
+      <exported-key name="FKF97D74FD9BABE3CA" table="gd_comment" schema="" catalog="gdufassistant" columns="tid"/>
+      <index name="FK8BDAEA72D9610B2B" unique="false" columns="sender"/>
+    </table>
+    <table name="gd_circleimg" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="pid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="imagePath" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="pid"/>
+      <foreign-key name="FK1879C7F19BABE3CA" columns="tid" ref-table="gd_circle" ref-schema="" ref-catalog="gdufassistant" ref-columns="tid" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="FK187A40119BABE3CA" columns="tid" ref-table="gd_circle" ref-schema="" ref-catalog="gdufassistant" ref-columns="tid" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="FK1879C7F19BABE3CA" unique="false" columns="tid"/>
+      <index name="FK187A40119BABE3CA" unique="false" columns="tid"/>
+    </table>
+    <table name="gd_circlemes" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="mid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="tid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="sender" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="receiver" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="mes" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="status" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="mid"/>
+      <foreign-key name="gd_circlemes_ibfk_1" columns="tid" ref-table="gd_circle" ref-schema="" ref-catalog="gdufassistant" ref-columns="tid" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="gd_circlemes_ibfk_2" columns="sender" ref-table="gd_user" ref-schema="" ref-catalog="gdufassistant" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="gd_circlemes_ibfk_3" columns="receiver" ref-table="gd_user" ref-schema="" ref-catalog="gdufassistant" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="gd_class" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="classId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="classroom" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cwhen" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="howlong" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="whichday" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="whichweek" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="classId"/>
+      <foreign-key name="FK1D4A3F969C01C744" columns="cid" ref-table="gd_course" ref-schema="" ref-catalog="gdufassistant" ref-columns="cid" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK1D4A3F969C01C744" unique="false" columns="cid"/>
+    </table>
+    <table name="gd_club" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="club_name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="club_photo" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="club_setup" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="club_state" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="club_summary" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="club_verification" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="admin_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cIcon" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cdate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="cdescribe" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="clubNum" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="aid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FKF8AFD2D8A1D91B8F" columns="admin_id" ref-table="gd_admin" ref-schema="" ref-catalog="gdufassistant" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FKDBF621A0434BB325" table="gd_club_message" schema="" catalog="gdufassistant" columns="club_id"/>
+      <index name="FKF8AFD2D8A1D91B8F" unique="false" columns="admin_id"/>
+    </table>
+    <table name="gd_club_message" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="message_content" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="message_photo" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="message_publishdate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="message_state" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="message_title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="club_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FKDBF621A0434BB325" columns="club_id" ref-table="gd_club" ref-schema="" ref-catalog="gdufassistant" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FKDBF621A0434BB325" unique="false" columns="club_id"/>
+    </table>
+    <table name="gd_comment" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="cid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="ctime" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="text" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="receiver" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="sender" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="tid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="cid"/>
+      <foreign-key name="FKF97D74FD9BABE3CA" columns="tid" ref-table="gd_circle" ref-schema="" ref-catalog="gdufassistant" ref-columns="tid" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FKF97D74FDD9610B2B" columns="sender" ref-table="gd_user" ref-schema="" ref-catalog="gdufassistant" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FKF97D74FDDF2CDAE5" columns="receiver" ref-table="gd_user" ref-schema="" ref-catalog="gdufassistant" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FKF97D74FD9BABE3CA" unique="false" columns="tid"/>
+      <index name="FKF97D74FDD9610B2B" unique="false" columns="sender"/>
+      <index name="FKF97D74FDDF2CDAE5" unique="false" columns="receiver"/>
+    </table>
+    <table name="gd_course" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="cid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="stuId" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="xq" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="year" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="cid"/>
+      <exported-key name="FK1D4A3F969C01C744" table="gd_class" schema="" catalog="gdufassistant" columns="cid"/>
+    </table>
+    <table name="gd_grade" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="gid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="stuId" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="xq" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="year" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="gid"/>
+      <exported-key name="FK22A7D31FDBF8EFCE" table="gd_grade_middle" schema="" catalog="gdufassistant" columns="gid"/>
+    </table>
+    <table name="gd_grade_middle" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="gid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="sid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="gid,sid"/>
+      <foreign-key name="FK22A7D31F3B9B78EF" columns="sid" ref-table="gd_subject" ref-schema="" ref-catalog="gdufassistant" ref-columns="sid" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK22A7D31FDBF8EFCE" columns="gid" ref-table="gd_grade" ref-schema="" ref-catalog="gdufassistant" ref-columns="gid" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK22A7D31F3B9B78EF" unique="false" columns="sid"/>
+      <index name="FK22A7D31FDBF8EFCE" unique="false" columns="gid"/>
+    </table>
+    <table name="gd_lfcomment" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="lfcId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="content" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lfcDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="mid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="lfcId"/>
+      <foreign-key name="FK124CFAC3E3DC0D44" columns="mid" ref-table="gd_message" ref-schema="" ref-catalog="gdufassistant" ref-columns="mid" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK124CFAC3E3DC0D44" unique="false" columns="mid"/>
+    </table>
+    <table name="gd_library_book" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="bookId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="author" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="borrowableCount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="dpt" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="href" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="number" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="press" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pressDate" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sortId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="hid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="bookId"/>
+      <foreign-key name="FK7E9B780F8AD59F7F" columns="hid" ref-table="gd_library_search_history" ref-schema="" ref-catalog="gdufassistant" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK7E9B780F8AD59F7F" unique="false" columns="hid"/>
+    </table>
+    <table name="gd_library_search_history" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="keywords" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="page" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="total" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK7E9B780F8AD59F7F" table="gd_library_book" schema="" catalog="gdufassistant" columns="hid"/>
+    </table>
+    <table name="gd_message" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="mid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="mContent" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="mTitle" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="m_publish_date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="mIcon" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="mid"/>
+      <exported-key name="FK124CFAC3E3DC0D44" table="gd_lfcomment" schema="" catalog="gdufassistant" columns="mid"/>
+    </table>
+    <table name="gd_offer" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="offer_content" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="offer_photo1" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="offer_photo2" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="offer_photo3" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="offer_publishTime" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="offer_title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="gd_subject" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="sid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="cj" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="dept" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="gname" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="jd" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="xf" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="sid"/>
+      <exported-key name="FK22A7D31F3B9B78EF" table="gd_grade_middle" schema="" catalog="gdufassistant" columns="sid"/>
+    </table>
+    <table name="gd_user" schema="" catalog="gdufassistant" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="accessTimes" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="classId" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="comfirmPassword" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="depart" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="headImg" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="jwcPass" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="libaryPass" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="marjor" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="realName" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="registDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="sex" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <column name="stuId" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telphone" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="xnMailPass" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK8BDAEA72D9610B2B" table="gd_circle" schema="" catalog="gdufassistant" columns="sender"/>
+      <exported-key name="gd_circlemes_ibfk_2" table="gd_circlemes" schema="" catalog="gdufassistant" columns="sender"/>
+      <exported-key name="gd_circlemes_ibfk_3" table="gd_circlemes" schema="" catalog="gdufassistant" columns="receiver"/>
+      <exported-key name="FKF97D74FDD9610B2B" table="gd_comment" schema="" catalog="gdufassistant" columns="sender"/>
+      <exported-key name="FKF97D74FDDF2CDAE5" table="gd_comment" schema="" catalog="gdufassistant" columns="receiver"/>
+    </table>
+  </data-source>
+</component>
